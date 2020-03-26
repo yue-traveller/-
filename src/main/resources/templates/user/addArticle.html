@@ -39,9 +39,7 @@
                                     <div class="layui-input-block">
                                         <select required lay-verify="required" name="arcType" lay-filter="column">
                                             <option></option>
-                                            <!--/*@thymesVar id="arcTypeId" type="java.lang.Integer"*/-->
-                                            <!--/*@thymesVar id="arcTypeName" type="java.lang.String"*/-->
-                                            <option th:each="arcType:${arcType}" th:value="${arcType.arcTypeId}" th:text="${arcType.arcTypeName}"></option>
+                                            <option th:each="arcType:${application.arcTypeList}" th:value="${arcType.arcTypeId}" th:text="${arcType.arcTypeName}"></option>
                                         </select>
                                     </div>
                                 </div>
