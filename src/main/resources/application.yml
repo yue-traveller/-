@@ -1,0 +1,20 @@
+server:
+  port: 2222
+  servlet:
+    context-path: /
+spring:
+  profiles:
+    active: dev
+  main:
+      allow-bean-definition-overriding: true
+
+logging:
+  level: {com.google.mapper : debug}
+mybatis:
+  mapper-locations: mybatis/*.xml
+  type-aliases-package: com.google.model
+pagehelper:
+  auto-dialect: mysql   #制定数据库语言
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.google.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.google.domain.User">
+    <!--@mbg.generated-->
+    <!--@Table user-->
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="points" jdbcType="INTEGER" property="points" />
+    <result column="is_vip" jdbcType="BIT" property="isVip" />
+    <result column="vip_grade" jdbcType="INTEGER" property="vipGrade" />
+    <result column="is_off" jdbcType="BIT" property="isOff" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="registration_date" jdbcType="TIMESTAMP" property="registrationDate" />
+    <result column="lately_login_time" jdbcType="TIMESTAMP" property="latelyLoginTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, open_id, nickname, user_name, `password`, email, head_portrait, sex, points, 
+    is_vip, vip_grade, is_off, role_name, registration_date, lately_login_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="user_id" keyProperty="userId" parameterType="com.google.domain.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user (open_id, nickname, user_name, 
+      `password`, email, head_portrait, 
+      sex, points, is_vip, vip_grade, 
+      is_off, role_name, registration_date, 
+      lately_login_time)
+    values (#{openId,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{headPortrait,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{points,jdbcType=INTEGER}, #{isVip,jdbcType=BIT}, #{vipGrade,jdbcType=INTEGER}, 
+      #{isOff,jdbcType=BIT}, #{roleName,jdbcType=VARCHAR}, #{registrationDate,jdbcType=TIMESTAMP}, 
+      #{latelyLoginTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="com.google.domain.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="headPortrait != null">
+        head_portrait,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="points != null">
+        points,
+      </if>
+      <if test="isVip != null">
+        is_vip,
+      </if>
+      <if test="vipGrade != null">
+        vip_grade,
+      </if>
+      <if test="isOff != null">
+        is_off,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="registrationDate != null">
+        registration_date,
+      </if>
+      <if test="latelyLoginTime != null">
+        lately_login_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null">
+        #{points,jdbcType=INTEGER},
+      </if>
+      <if test="isVip != null">
+        #{isVip,jdbcType=BIT},
+      </if>
+      <if test="vipGrade != null">
+        #{vipGrade,jdbcType=INTEGER},
+      </if>
+      <if test="isOff != null">
+        #{isOff,jdbcType=BIT},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationDate != null">
+        #{registrationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latelyLoginTime != null">
+        #{latelyLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.google.domain.User">
+    <!--@mbg.generated-->
+    update user
+    <set>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null">
+        points = #{points,jdbcType=INTEGER},
+      </if>
+      <if test="isVip != null">
+        is_vip = #{isVip,jdbcType=BIT},
+      </if>
+      <if test="vipGrade != null">
+        vip_grade = #{vipGrade,jdbcType=INTEGER},
+      </if>
+      <if test="isOff != null">
+        is_off = #{isOff,jdbcType=BIT},
+      </if>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationDate != null">
+        registration_date = #{registrationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latelyLoginTime != null">
+        lately_login_time = #{latelyLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.google.domain.User">
+    <!--@mbg.generated-->
+    update user
+    set open_id = #{openId,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      points = #{points,jdbcType=INTEGER},
+      is_vip = #{isVip,jdbcType=BIT},
+      vip_grade = #{vipGrade,jdbcType=INTEGER},
+      is_off = #{isOff,jdbcType=BIT},
+      role_name = #{roleName,jdbcType=VARCHAR},
+      registration_date = #{registrationDate,jdbcType=TIMESTAMP},
+      lately_login_time = #{latelyLoginTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectUserByUsername" parameterType="java.lang.String" resultType="com.google.domain.User">
+       select * from user where user_name=#{userName,jdbcType=VARCHAR}
+  </select>
+  <select id="selectUserByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from user where email=#{email,jdbcType=VARCHAR}
+  </select>
+  <select id="selectUserByUsernameAndPassword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from user where user_name=#{username} and #{password}
+  </select>
+</mapper>

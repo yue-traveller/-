@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.google.mapper.ArcTypeMapper">
+  <resultMap id="BaseResultMap" type="com.google.domain.ArcType">
+    <!--@mbg.generated-->
+    <!--@Table arc_type-->
+    <id column="arc_type_id" jdbcType="INTEGER" property="arcTypeId" />
+    <result column="arc_type_name" jdbcType="VARCHAR" property="arcTypeName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <collection property="articleList" ofType="com.google.domain.Article" javaType="List" autoMapping="true">
+      <id column="arc_type_id" property="arcTypeId"/>
+      <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="publish_date" jdbcType="TIMESTAMP" property="publishDate" />
+      <result column="user_id" jdbcType="INTEGER" property="userId" />
+      <result column="arc_type_id" jdbcType="INTEGER" property="arcTypeId" />
+      <result column="is_free" jdbcType="BIT" property="isFree" />
+      <result column="points" jdbcType="INTEGER" property="points" />
+      <result column="content" jdbcType="LONGVARCHAR" property="content" />
+      <result column="download" jdbcType="VARCHAR" property="download" />
+      <result column="password" jdbcType="VARCHAR" property="password" />
+      <result column="is_hot" jdbcType="BIT" property="isHot" />
+      <result column="state" jdbcType="INTEGER" property="state" />
+      <result column="reason" jdbcType="VARCHAR" property="reason" />
+      <result column="check_date" jdbcType="TIMESTAMP" property="checkDate" />
+      <result column="click" jdbcType="INTEGER" property="click" />
+      <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+      <result column="description" jdbcType="VARCHAR" property="description" />
+      <result column="is_useful" jdbcType="BIT" property="isUseful" />
+    </collection>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    arc_type_id, arc_type_name, remark, sort
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from arc_type
+    where arc_type_id = #{arcTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from arc_type
+    where arc_type_id = #{arcTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="arc_type_id" keyProperty="arcTypeId" parameterType="com.google.domain.ArcType" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into arc_type (arc_type_name, remark, sort
+      )
+    values (#{arcTypeName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="arc_type_id" keyProperty="arcTypeId" parameterType="com.google.domain.ArcType" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into arc_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="arcTypeName != null">
+        arc_type_name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="arcTypeName != null">
+        #{arcTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.google.domain.ArcType">
+    <!--@mbg.generated-->
+    update arc_type
+    <set>
+      <if test="arcTypeName != null">
+        arc_type_name = #{arcTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where arc_type_id = #{arcTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.google.domain.ArcType">
+    <!--@mbg.generated-->
+    update arc_type
+    set arc_type_name = #{arcTypeName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER}
+    where arc_type_id = #{arcTypeId,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select a.name,b.arc_type_name, a.points,a.publish_date,a.state from arc_type b left join article a on b.arc_type_id = a.arc_type_id
+    <where>
+      <if test="_parameter != null and _parameter != ''">
+       and a.name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+  </select>
+ <select id="selectAll" resultMap="BaseResultMap">
+   select * from arc_type
+ </select>
+
+</mapper>
