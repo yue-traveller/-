@@ -5,6 +5,8 @@ server:
 spring:
   profiles:
     active: dev
+  thymeleaf:
+    prefix: classpath:/templates/
   main:
       allow-bean-definition-overriding: true
 
@@ -13,6 +15,8 @@ logging:
 mybatis:
   mapper-locations: mybatis/*.xml
   type-aliases-package: com.google.model
+  configuration:
+    map-underscore-to-camel-case: true
 pagehelper:
   auto-dialect: mysql   #制定数据库语言
   reasonable: true

@@ -38,8 +38,8 @@
                                     <label class="layui-form-label">资源类型</label>
                                     <div class="layui-input-block">
                                         <select required lay-verify="required" name="arcType" lay-filter="column">
-                                            <option></option>
-                                            <option th:each="arcType:${application.arcTypeList}" th:value="${arcType.arcTypeId}" th:text="${arcType.arcTypeName}"></option>
+                                            <option>1</option>
+                                            <option th:each="arcType:${arcType}" th:value="${arcType.arcTypeId}" th:text="${arcType.arcTypeName}">[[arcType.arcTypeId]]</option>
                                         </select>
                                     </div>
                                 </div>
@@ -95,19 +95,21 @@
                                 <div class="layui-inline">
                                     <label class="layui-form-label">所需积分</label>
                                     <div class="layui-input-inline" style="width: 190px;">
-                                        <select name="points">
-                                            <option value="0">免费资源</option>
-                                            <option value="1">1个积分</option>
-                                            <option value="2">2个积分</option>
-                                            <option value="3">3个积分</option>
-                                            <option value="4">4个积分</option>
-                                            <option value="5">5个积分</option>
-                                            <option value="6">6个积分</option>
-                                            <option value="7">7个积分</option>
-                                            <option value="8">8个积分</option>
-                                            <option value="9">9个积分</option>
-                                            <option value="10">10个积分</option>
-                                        </select>
+                                        <label>
+                                            <select name="points">
+                                                <option value="0">免费资源</option>
+                                                <option value="1">1个积分</option>
+                                                <option value="2">2个积分</option>
+                                                <option value="3">3个积分</option>
+                                                <option value="4">4个积分</option>
+                                                <option value="5">5个积分</option>
+                                                <option value="6">6个积分</option>
+                                                <option value="7">7个积分</option>
+                                                <option value="8">8个积分</option>
+                                                <option value="9">9个积分</option>
+                                                <option value="10">10个积分</option>
+                                            </select>
+                                        </label>
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">
                                         发布资源后无法修改

@@ -112,7 +112,7 @@ public class Article implements Serializable {
 
     private User user;  //所属用户
 
-    private ArcType arcType; //所属资源类型
+
 
     @Transient
     private String contentNoTag;

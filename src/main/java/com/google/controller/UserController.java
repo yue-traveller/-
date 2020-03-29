@@ -192,7 +192,7 @@ public class UserController {
 
 
  }
- @RequestMapping("toAddArticle")
+ @RequestMapping("/toAddArticle")
  public String addArticle(Map<String,Object> map){
      List<ArcType> arcTypes = arcTypeService.selectAll();
      map.put("arcType",arcTypes);
@@ -213,16 +213,17 @@ public class UserController {
           reslut.put("erroInfo","百度云分享链接已经失效，请重新发布！");
           return reslut;
       }
-      User currentUser = (User) session.getAttribute(Constes.CURRENT_USER);
+
+      Integer id = (Integer) session.getAttribute(Constes.USER_ID_NAME);
       if (article.getArticleId()==null){
           article.setPublishDate(new Date());
-          article.setUser(currentUser);
+          article.setUserId(id);
           if (article.getPoints()==0){
               article.setIsFree(true);
           }
           article.setState(1);
           article.setClick(new Random().nextInt(150)+50);
-          articleService.insert(article);
+          articleService.insertSelective(article);
           reslut.put("success",true);
       }
       return reslut;

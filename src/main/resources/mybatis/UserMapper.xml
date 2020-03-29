@@ -211,7 +211,7 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <select id="selectUserByUsername" parameterType="java.lang.String" resultType="com.google.domain.User">
-       select * from user where user_name=#{userName,jdbcType=VARCHAR}
+       select user_id, open_id, nickname, user_name, password, email, head_portrait, sex, points, is_vip, vip_grade, is_off, role_name, registration_date, lately_login_time from user where user_name=#{userName,jdbcType=VARCHAR}
   </select>
   <select id="selectUserByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
     select * from user where email=#{email,jdbcType=VARCHAR}
